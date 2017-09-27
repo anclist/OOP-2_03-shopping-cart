@@ -23,12 +23,33 @@ class ShoppingCart
     end
   end
 
+  def self.total_cart_before_tax
+    total_before_tax = 0
+    @@shoping_cart.each do |price|
+      total_before_tax += price.base_price
+    end
+    total_before_tax
+  end
+
+  def self.total_cart_after_tax
+    total_after_tax = 0
+    @@shoping_cart.each do |price|
+      total_after_tax += price.total_price
+    end
+    total_after_tax.round(2)
+  end
+
 end
 
 ShoppingCart.add_product("soap", 5.5)
 ShoppingCart.add_product("shampoo", 7)
 ShoppingCart.add_product("razor", 3.25)
+ShoppingCart.add_product("tooth brush", 4.35)
+ShoppingCart.add_product("deodorant", 4.60)
+
 p ShoppingCart.shoping_cart
 p "-----------------"
 ShoppingCart.remove_product("soap")
 p ShoppingCart.shoping_cart
+p "Your total before tax is: #{ShoppingCart.total_cart_before_tax}"
+p "Your total after tax is: #{ShoppingCart.total_cart_after_tax}"
