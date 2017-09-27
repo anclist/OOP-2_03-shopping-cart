@@ -1,4 +1,3 @@
-# require './shopping-cart.rb'
 class Products
 
   def initialize(name, base_price)
@@ -36,6 +35,3 @@ class Products
   end
 
 end
-
-soap = Products.new("Soap", 10)
-puts soap.total_price
